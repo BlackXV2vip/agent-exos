@@ -185,8 +185,9 @@ else
         specific_version=$(curl -s https://api.github.com/repos/BlackXV2vip/agent-exos/releases/latest | sed -n 's/.*"tag_name": *"v\([^"]*\)".*/\1/p')
 
         if [[ $? -ne 0 || -z "$specific_version" ]]; then
-            echo -e "${RED}Failed to fetch version information${NC}"
-            exit 1
+            echo -e "${ORANGE}No release found — using source installation${NC}"
+            specific_version="source"
+            url=""
         fi
     else
         # Strip leading 'v' if present
@@ -328,6 +329,13 @@ download_and_install() {
     print_message info "\n${MUTED}Installing ${NC}exos-agent ${MUTED}version: ${NC}$specific_version"
     local tmp_dir="${TMPDIR:-/tmp}/exos-agent_install_$$"
     mkdir -p "$tmp_dir"
+
+    if [ -z "$url" ]; then
+        echo "[install] Cloning source from https://github.com/BlackXV2vip/agent-exos.git"
+        git clone --depth 1 https://github.com/BlackXV2vip/agent-exos.git "$tmp_dir/repo" 2>/dev/null || curl -L -o "$tmp_dir/repo.tar.gz" https://github.com/BlackXV2vip/agent-exos/archive/main.tar.gz
+        echo -e "${MUTED}Source installed at ${NC}$tmp_dir/repo"
+        return
+    fi
 
     if [[ "$os" == "windows" ]] || ! [ -t 2 ] || ! download_with_progress "$url" "$tmp_dir/$filename"; then
         # Fallback to standard curl on Windows, non-TTY environments, or if custom progress fails
