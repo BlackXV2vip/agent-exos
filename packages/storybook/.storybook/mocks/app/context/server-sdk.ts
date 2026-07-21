@@ -1,6 +1,6 @@
 const providers = [
-  "opencode",
-  "opencode-go",
+  "exos-agent",
+  "exos-agent-go",
   "anthropic",
   "openai",
   "google",

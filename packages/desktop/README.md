@@ -1,6 +1,6 @@
-# OpenCode Desktop
+# Exos Agent Desktop
 
-The OpenCode Desktop app, built with Electron.
+The Exos Agent Desktop app, built with Electron.
 
 ## Development
 

@@ -16,8 +16,8 @@ import type {
   SnapshotFileDiff,
   Todo,
   VcsInfo,
-} from "@opencode-ai/sdk/v2/client"
-import { NormalizedProviderListResponse } from "@opencode-ai/session-ui/context"
+} from "@exos-agent/sdk/v2/client"
+import { NormalizedProviderListResponse } from "@exos-agent/session-ui/context"
 import type { Accessor } from "solid-js"
 import type { SetStoreFunction, Store } from "solid-js/store"
 

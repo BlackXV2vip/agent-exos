@@ -1,9 +1,9 @@
 import { Component, For, Match, Show, Switch } from "solid-js"
-import { FileIcon } from "@opencode-ai/ui/file-icon"
-import { Icon } from "@opencode-ai/ui/icon"
-import { Tag } from "@opencode-ai/ui/v2/badge-v2"
-import { KeybindV2 } from "@opencode-ai/ui/v2/keybind-v2"
-import { getDirectory, getFilename } from "@opencode-ai/core/util/path"
+import { FileIcon } from "@exos-agent/ui/file-icon"
+import { Icon } from "@exos-agent/ui/icon"
+import { Tag } from "@exos-agent/ui/v2/badge-v2"
+import { KeybindV2 } from "@exos-agent/ui/v2/keybind-v2"
+import { getDirectory, getFilename } from "@exos-agent/core/util/path"
 
 export type AtOption =
   | { type: "agent"; name: string; display: string }

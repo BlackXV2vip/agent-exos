@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ExosAgent
+Exec=/opt/ExosAgent/ai.exos-agent.desktop %U
+Terminal=false
+Type=Application
+Icon=ai.exos-agent.desktop
+StartupWMClass=ai.exos-agent.desktop
+NoDisplay=true
+Comment=Open source AI coding agent
+Categories=Development;

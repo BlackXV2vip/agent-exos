@@ -12,10 +12,10 @@ import type { DesktopTheme } from "./types"
 export type ColorScheme = "light" | "dark" | "system"
 
 const STORAGE_KEYS = {
-  THEME_ID: "opencode-theme-id",
-  COLOR_SCHEME: "opencode-color-scheme",
-  THEME_CSS_LIGHT: "opencode-theme-css-light",
-  THEME_CSS_DARK: "opencode-theme-css-dark",
+  THEME_ID: "exos-agent-theme-id",
+  COLOR_SCHEME: "exos-agent-color-scheme",
+  THEME_CSS_LIGHT: "exos-agent-theme-css-light",
+  THEME_CSS_DARK: "exos-agent-theme-css-dark",
 } as const
 
 const THEME_STYLE_ID = "oc-theme"
@@ -69,7 +69,7 @@ const names: Record<string, string> = {
   nord: "Nord",
   "one-dark": "One Dark",
   onedarkpro: "One Dark Pro",
-  opencode: "OpenCode",
+  exos-agent: "ExosAgent",
   orng: "Orng",
   "osaka-jade": "Osaka Jade",
   palenight: "Palenight",
