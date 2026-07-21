@@ -154,7 +154,7 @@ test("probes addable distros in parallel before checking ExosAgent", async () =>
   persistedServers = []
   const started: string[] = []
   const release = new Map<string, () => void>()
-  const exos-agent: string[] = []
+  const exosAgent: string[] = []
   const controller = createWslServersController("1.16.2", async () => new Promise<never>(() => undefined), {
     ...testControllerOptions(),
     probeDistro: async (distro) => {
@@ -163,7 +163,7 @@ test("probes addable distros in parallel before checking ExosAgent", async () =>
       return { name: distro, canExecute: true, hasBash: true, hasCurl: true, error: null }
     },
     resolveExosAgent: async (distro) => {
-      exos-agent.push(distro)
+      exosAgent.push(distro)
       return "/home/me/.exos-agent/bin/exos-agent"
     },
   })
@@ -171,19 +171,19 @@ test("probes addable distros in parallel before checking ExosAgent", async () =>
   const task = controller.probeAddable(["Debian", "Ubuntu"])
   await waitFor(() => started.length === 2)
   expect(started).toEqual(["Debian", "Ubuntu"])
-  expect(exos-agent).toEqual([])
+  expect(exosAgent).toEqual([])
   release.get("Debian")?.()
   release.get("Ubuntu")?.()
   await task
 
   expect(Object.keys(controller.getState().distroProbes)).toEqual(["Debian", "Ubuntu"])
-  expect(exos-agent).toEqual(["Debian", "Ubuntu"])
+  expect(exosAgent).toEqual(["Debian", "Ubuntu"])
   expect(Object.keys(controller.getState().exosAgentChecks)).toEqual(["Debian", "Ubuntu"])
 })
 
 test("does not check ExosAgent in addable distros that cannot execute commands", async () => {
   persistedServers = []
-  const exos-agent: string[] = []
+  const exosAgent: string[] = []
   const controller = createWslServersController("1.16.2", async () => new Promise<never>(() => undefined), {
     ...testControllerOptions(),
     probeDistro: async (distro) => ({
@@ -194,7 +194,7 @@ test("does not check ExosAgent in addable distros that cannot execute commands",
       error: distro === "Debian" ? null : "Open Ubuntu once to finish setup",
     }),
     resolveExosAgent: async (distro) => {
-      exos-agent.push(distro)
+      exosAgent.push(distro)
       return "/home/me/.exos-agent/bin/exos-agent"
     },
   })
@@ -202,7 +202,7 @@ test("does not check ExosAgent in addable distros that cannot execute commands",
   await controller.probeAddable(["Debian", "Ubuntu"])
 
   expect(Object.keys(controller.getState().distroProbes)).toEqual(["Debian", "Ubuntu"])
-  expect(exos-agent).toEqual(["Debian"])
+  expect(exosAgent).toEqual(["Debian"])
   expect(Object.keys(controller.getState().exosAgentChecks)).toEqual(["Debian"])
 })
 

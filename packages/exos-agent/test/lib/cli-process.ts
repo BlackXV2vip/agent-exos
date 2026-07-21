@@ -179,7 +179,7 @@ export type ExosAgentCli = {
 export type CliFixture = {
   readonly llm: TestLLMServer["Service"]
   readonly home: string
-  readonly exos-agent: ExosAgentCli
+  readonly exosAgent: ExosAgentCli
 }
 
 // Provisions a TestLLMServer + tmpdir + spawn helper and invokes fn. Cleans
@@ -464,9 +464,9 @@ export function withCliFixture<A, E>(
       } satisfies AcpHandle
     })
 
-    const exos-agent: ExosAgentCli = { run, startRun, serve, acp, spawn, expectExit, parseJsonEvents }
+    const exosAgent: ExosAgentCli = { run, startRun, serve, acp, spawn, expectExit, parseJsonEvents }
 
-    return yield* fn({ llm, home, exos-agent })
+    return yield* fn({ llm, home, exosAgent })
     // FetchHttpClient is provided so test bodies can `yield* HttpClient.HttpClient`
     // and hit endpoints on `exos-agent.serve()` without rolling their own fetch.
   }).pipe(

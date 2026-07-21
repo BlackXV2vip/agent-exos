@@ -369,7 +369,7 @@ export const ProvidersLoginCommand = effectCmd({
     const hooks = yield* pluginSvc.list()
 
     const priority: Record<string, number> = {
-      exos-agent: 0,
+      "exos-agent": 0,
       openai: 1,
       "github-copilot": 2,
       google: 3,
@@ -396,7 +396,7 @@ export const ProvidersLoginCommand = effectCmd({
           label: x.name,
           value: x.id,
           hint: {
-            exos-agent: "recommended",
+            "exos-agent": "recommended",
             openai: "ChatGPT Plus/Pro or API key",
           }[x.id],
         })),

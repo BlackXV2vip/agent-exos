@@ -583,7 +583,7 @@ const accountTokenIt = configIt({
     config: () =>
       Effect.succeed(
         Option.some({
-          provider: { exos-agent: { options: { apiKey: "{env:EXOS_AGENT_CONSOLE_TOKEN}" } } },
+          provider: { "exos-agent": { options: { apiKey: "{env:EXOS_AGENT_CONSOLE_TOKEN}" } } },
         }),
       ),
     token: () => Effect.succeed(Option.some(AccessToken.make("st_test_token"))),

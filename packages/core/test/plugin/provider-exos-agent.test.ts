@@ -203,7 +203,7 @@ describe("ExosAgentPlugin", () => {
         const catalog = yield* Catalog.Service
         yield* catalog.transform((catalog) => {
           const provider = ProviderV2.Info.make({
-            ...ProviderV2.Info.empty(ProviderV2.ID.exos-agent),
+            ...ProviderV2.Info.empty(ProviderV2.ID["exos-agent"]),
             api: { type: "aisdk", package: "test-provider" },
           })
           const model = ModelV2.Info.make({
@@ -217,8 +217,8 @@ describe("ExosAgentPlugin", () => {
           })
         })
         yield* addPlugin()
-        expect(required(yield* catalog.provider.get(ProviderV2.ID.exos-agent)).request.body.apiKey).toBe("public")
-        expect(required(yield* catalog.model.get(ProviderV2.ID.exos-agent, ModelV2.ID.make("paid"))).enabled).toBe(false)
+        expect(required(yield* catalog.provider.get(ProviderV2.ID["exos-agent"])).request.body.apiKey).toBe("public")
+        expect(required(yield* catalog.model.get(ProviderV2.ID["exos-agent"], ModelV2.ID.make("paid"))).enabled).toBe(false)
       }),
     ),
   )
@@ -229,7 +229,7 @@ describe("ExosAgentPlugin", () => {
         const catalog = yield* Catalog.Service
         yield* catalog.transform((catalog) => {
           const provider = ProviderV2.Info.make({
-            ...ProviderV2.Info.empty(ProviderV2.ID.exos-agent),
+            ...ProviderV2.Info.empty(ProviderV2.ID["exos-agent"]),
             api: { type: "aisdk", package: "test-provider" },
           })
           const model = ModelV2.Info.make({
@@ -243,8 +243,8 @@ describe("ExosAgentPlugin", () => {
           })
         })
         yield* addPlugin()
-        expect(required(yield* catalog.provider.get(ProviderV2.ID.exos-agent)).request.body.apiKey).toBe("public")
-        expect(required(yield* catalog.model.get(ProviderV2.ID.exos-agent, ModelV2.ID.make("free"))).enabled).toBe(true)
+        expect(required(yield* catalog.provider.get(ProviderV2.ID["exos-agent"])).request.body.apiKey).toBe("public")
+        expect(required(yield* catalog.model.get(ProviderV2.ID["exos-agent"], ModelV2.ID.make("free"))).enabled).toBe(true)
       }),
     ),
   )
@@ -255,7 +255,7 @@ describe("ExosAgentPlugin", () => {
         const catalog = yield* Catalog.Service
         yield* catalog.transform((catalog) => {
           const provider = ProviderV2.Info.make({
-            ...ProviderV2.Info.empty(ProviderV2.ID.exos-agent),
+            ...ProviderV2.Info.empty(ProviderV2.ID["exos-agent"]),
             api: { type: "aisdk", package: "test-provider" },
           })
           const model = ModelV2.Info.make({
@@ -269,8 +269,8 @@ describe("ExosAgentPlugin", () => {
           })
         })
         yield* addPlugin()
-        expect(required(yield* catalog.provider.get(ProviderV2.ID.exos-agent)).request.body.apiKey).toBe("public")
-        expect(required(yield* catalog.model.get(ProviderV2.ID.exos-agent, ModelV2.ID.make("output-only"))).enabled).toBe(
+        expect(required(yield* catalog.provider.get(ProviderV2.ID["exos-agent"])).request.body.apiKey).toBe("public")
+        expect(required(yield* catalog.model.get(ProviderV2.ID["exos-agent"], ModelV2.ID.make("output-only"))).enabled).toBe(
           true,
         )
       }),
@@ -283,7 +283,7 @@ describe("ExosAgentPlugin", () => {
         const catalog = yield* Catalog.Service
         yield* catalog.transform((catalog) => {
           const provider = ProviderV2.Info.make({
-            ...ProviderV2.Info.empty(ProviderV2.ID.exos-agent),
+            ...ProviderV2.Info.empty(ProviderV2.ID["exos-agent"]),
             api: { type: "aisdk", package: "test-provider" },
           })
           const model = ModelV2.Info.make({
@@ -297,8 +297,8 @@ describe("ExosAgentPlugin", () => {
           })
         })
         yield* addPlugin()
-        expect(required(yield* catalog.provider.get(ProviderV2.ID.exos-agent)).request.body.apiKey).toBeUndefined()
-        expect(required(yield* catalog.model.get(ProviderV2.ID.exos-agent, ModelV2.ID.make("paid"))).enabled).toBe(true)
+        expect(required(yield* catalog.provider.get(ProviderV2.ID["exos-agent"])).request.body.apiKey).toBeUndefined()
+        expect(required(yield* catalog.model.get(ProviderV2.ID["exos-agent"], ModelV2.ID.make("paid"))).enabled).toBe(true)
       }),
     ),
   )
@@ -316,7 +316,7 @@ describe("ExosAgentPlugin", () => {
         })
         yield* catalog.transform((catalog) => {
           const provider = ProviderV2.Info.make({
-            ...ProviderV2.Info.empty(ProviderV2.ID.exos-agent),
+            ...ProviderV2.Info.empty(ProviderV2.ID["exos-agent"]),
             api: { type: "aisdk", package: "test-provider" },
           })
           const model = ModelV2.Info.make({
@@ -330,8 +330,8 @@ describe("ExosAgentPlugin", () => {
           })
         })
         yield* addPlugin()
-        expect(required(yield* catalog.provider.get(ProviderV2.ID.exos-agent)).request.body.apiKey).toBeUndefined()
-        expect(required(yield* catalog.model.get(ProviderV2.ID.exos-agent, ModelV2.ID.make("paid"))).enabled).toBe(true)
+        expect(required(yield* catalog.provider.get(ProviderV2.ID["exos-agent"])).request.body.apiKey).toBeUndefined()
+        expect(required(yield* catalog.model.get(ProviderV2.ID["exos-agent"], ModelV2.ID.make("paid"))).enabled).toBe(true)
       }),
     ),
   )
@@ -342,7 +342,7 @@ describe("ExosAgentPlugin", () => {
         const catalog = yield* Catalog.Service
         yield* catalog.transform((catalog) => {
           const provider = ProviderV2.Info.make({
-            ...ProviderV2.Info.empty(ProviderV2.ID.exos-agent),
+            ...ProviderV2.Info.empty(ProviderV2.ID["exos-agent"]),
             api: { type: "aisdk", package: "test-provider" },
             request: {
               headers: {},
@@ -362,8 +362,8 @@ describe("ExosAgentPlugin", () => {
           })
         })
         yield* addPlugin()
-        expect(required(yield* catalog.provider.get(ProviderV2.ID.exos-agent)).request.body.apiKey).toBe("configured")
-        expect(required(yield* catalog.model.get(ProviderV2.ID.exos-agent, ModelV2.ID.make("paid"))).enabled).toBe(true)
+        expect(required(yield* catalog.provider.get(ProviderV2.ID["exos-agent"])).request.body.apiKey).toBe("configured")
+        expect(required(yield* catalog.model.get(ProviderV2.ID["exos-agent"], ModelV2.ID.make("paid"))).enabled).toBe(true)
       }),
     ),
   )
@@ -397,7 +397,7 @@ describe("ExosAgentPlugin", () => {
   it.effect("prefers gpt-5-nano as the exos-agent small model", () =>
     Effect.gen(function* () {
       const catalog = yield* Catalog.Service
-      const providerID = ProviderV2.ID.exos-agent
+      const providerID = ProviderV2.ID["exos-agent"]
 
       yield* catalog.transform((catalog) => {
         catalog.provider.update(providerID, () => {})

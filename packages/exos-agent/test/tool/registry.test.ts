@@ -124,7 +124,7 @@ describe("tool.registry", () => {
       const agents = yield* Agent.Service
       const ids = yield* registry.ids()
       const tools = yield* registry.tools({
-        providerID: ProviderV2.ID.exos-agent,
+        providerID: ProviderV2.ID["exos-agent"],
         modelID: ModelV2.ID.make("test"),
         agent: yield* agents.defaultInfo(),
       })
@@ -141,7 +141,7 @@ describe("tool.registry", () => {
       const registry = yield* ToolRegistry.Service
       const agents = yield* Agent.Service
       const tools = yield* registry.tools({
-        providerID: ProviderV2.ID.exos-agent,
+        providerID: ProviderV2.ID["exos-agent"],
         modelID: ModelV2.ID.make("test"),
         agent: yield* agents.defaultInfo(),
       })
@@ -157,7 +157,7 @@ describe("tool.registry", () => {
       const build = yield* agent.get("build")
       if (!build) throw new Error("build agent not found")
       const task = (yield* registry.tools({
-        providerID: ProviderV2.ID.exos-agent,
+        providerID: ProviderV2.ID["exos-agent"],
         modelID: ModelV2.ID.make("test"),
         agent: build,
       })).find((tool) => tool.id === "task")
@@ -170,8 +170,8 @@ describe("tool.registry", () => {
   it.instance("loads tools from .exos-agent/tool (singular)", () =>
     Effect.gen(function* () {
       const test = yield* TestInstance
-      const exos-agent = path.join(test.directory, ".exos-agent")
-      const tool = path.join(exos-agent, "tool")
+      const exosAgent = path.join(test.directory, ".exos-agent")
+      const tool = path.join(exosAgent, "tool")
       yield* Effect.promise(() => fs.mkdir(tool, { recursive: true }))
       yield* Effect.promise(() =>
         Bun.write(
@@ -275,8 +275,8 @@ describe("tool.registry", () => {
   it.instance("loads tools from .exos-agent/tools (plural)", () =>
     Effect.gen(function* () {
       const test = yield* TestInstance
-      const exos-agent = path.join(test.directory, ".exos-agent")
-      const tools = path.join(exos-agent, "tools")
+      const exosAgent = path.join(test.directory, ".exos-agent")
+      const tools = path.join(exosAgent, "tools")
       yield* Effect.promise(() => fs.mkdir(tools, { recursive: true }))
       yield* Effect.promise(() =>
         Bun.write(
@@ -335,7 +335,7 @@ describe("tool.registry", () => {
 
       const agents = yield* Agent.Service
       const promptTools = yield* registry.tools({
-        providerID: ProviderV2.ID.exos-agent,
+        providerID: ProviderV2.ID["exos-agent"],
         modelID: ModelV2.ID.make("test"),
         agent: yield* agents.defaultInfo(),
       })
@@ -355,13 +355,13 @@ describe("tool.registry", () => {
     () =>
       Effect.gen(function* () {
         const test = yield* TestInstance
-        const exos-agent = path.join(test.directory, ".exos-agent")
-        const customTools = path.join(exos-agent, "tools")
-        const plugin = path.join(exos-agent, "node_modules", "@exos-agent", "plugin")
+        const exosAgent = path.join(test.directory, ".exos-agent")
+        const customTools = path.join(exosAgent, "tools")
+        const plugin = path.join(exosAgent, "node_modules", "@exos-agent", "plugin")
         yield* Effect.promise(() => fs.mkdir(path.join(plugin, "dist"), { recursive: true }))
         yield* Effect.promise(() => fs.mkdir(customTools, { recursive: true }))
         yield* Effect.promise(() =>
-          fs.cp(path.dirname(fileURLToPath(import.meta.resolve("zod"))), path.join(exos-agent, "node_modules", "zod"), {
+          fs.cp(path.dirname(fileURLToPath(import.meta.resolve("zod"))), path.join(exosAgent, "node_modules", "zod"), {
             dereference: true,
             recursive: true,
           }),
@@ -497,12 +497,12 @@ describe("tool.registry", () => {
   it.instance("loads tools with external dependencies without crashing", () =>
     Effect.gen(function* () {
       const test = yield* TestInstance
-      const exos-agent = path.join(test.directory, ".exos-agent")
-      const tools = path.join(exos-agent, "tools")
+      const exosAgent = path.join(test.directory, ".exos-agent")
+      const tools = path.join(exosAgent, "tools")
       yield* Effect.promise(() => fs.mkdir(tools, { recursive: true }))
       yield* Effect.promise(() =>
         Bun.write(
-          path.join(exos-agent, "package.json"),
+          path.join(exosAgent, "package.json"),
           JSON.stringify({
             name: "custom-tools",
             dependencies: {
@@ -514,7 +514,7 @@ describe("tool.registry", () => {
       )
       yield* Effect.promise(() =>
         Bun.write(
-          path.join(exos-agent, "package-lock.json"),
+          path.join(exosAgent, "package-lock.json"),
           JSON.stringify({
             name: "custom-tools",
             lockfileVersion: 3,
@@ -530,7 +530,7 @@ describe("tool.registry", () => {
         ),
       )
 
-      const cowsay = path.join(exos-agent, "node_modules", "cowsay")
+      const cowsay = path.join(exosAgent, "node_modules", "cowsay")
       yield* Effect.promise(() => fs.mkdir(cowsay, { recursive: true }))
       yield* Effect.promise(() =>
         Bun.write(

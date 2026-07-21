@@ -11,9 +11,9 @@ import {
   type AcpClient,
 } from "./acp-test-client"
 
-export function createAcpClient(input: Pick<CliFixture, "exos-agent">, env?: Record<string, string>) {
+export function createAcpClient(input: Pick<CliFixture, "exosAgent">, env?: Record<string, string>) {
   return Effect.gen(function* () {
-    return createJsonRpcAcpClient(yield* input.exos-agent.acp(env ? { env } : undefined))
+    return createJsonRpcAcpClient(yield* input.exosAgent.acp(env ? { env } : undefined))
   })
 }
 

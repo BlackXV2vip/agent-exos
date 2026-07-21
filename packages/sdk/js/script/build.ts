@@ -9,9 +9,9 @@ import path from "path"
 
 import { createClient } from "@hey-api/openapi-ts"
 
-const exos-agent = path.resolve(dir, "../../exos-agent")
+const exosAgent = path.resolve(dir, "../../exos-agent")
 
-await $`bun dev generate > ${dir}/openapi.json`.cwd(exos-agent)
+await $`bun dev generate > ${dir}/openapi.json`.cwd(exosAgent)
 
 const document = (await Bun.file("./openapi.json").json()) as {
   components?: { schemas?: Record<string, unknown> }

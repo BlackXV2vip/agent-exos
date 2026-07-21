@@ -91,7 +91,7 @@ describe("GoogleVertexPlugin", () => {
     Effect.gen(function* () {
       const catalog = yield* Catalog.Service
       yield* catalog.transform((catalog) =>
-        catalog.provider.update(ProviderV2.ID.exos-agent, (provider) => {
+        catalog.provider.update(ProviderV2.ID["exos-agent"], (provider) => {
           provider.api = {
             type: "aisdk",
             package: "@ai-sdk/openai-compatible",
@@ -101,7 +101,7 @@ describe("GoogleVertexPlugin", () => {
       )
       yield* addPlugin()
 
-      const provider = required(yield* catalog.provider.get(ProviderV2.ID.exos-agent))
+      const provider = required(yield* catalog.provider.get(ProviderV2.ID["exos-agent"]))
       expect(provider.request.body).toEqual({})
     }),
   )

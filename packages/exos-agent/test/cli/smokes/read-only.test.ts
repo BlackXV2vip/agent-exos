@@ -24,10 +24,10 @@ describe("exos-agent read-only commands (smoke)", () => {
   // and the command should report that cleanly.
   cliIt.live(
     "mcp list: exits 0",
-    ({ exos-agent }) =>
+    ({ exosAgent }) =>
       Effect.gen(function* () {
-        const r = yield* exos-agent.spawn(["mcp", "list"])
-        exos-agent.expectExit(r, 0, "mcp list")
+        const r = yield* exosAgent.spawn(["mcp", "list"])
+        exosAgent.expectExit(r, 0, "mcp list")
       }),
     60_000,
   )
@@ -40,10 +40,10 @@ describe("exos-agent read-only commands (smoke)", () => {
   // test passes on a clean CI runner without env-var leakage.
   cliIt.live(
     "providers list: exits 0 and prints the credentials section",
-    ({ exos-agent }) =>
+    ({ exosAgent }) =>
       Effect.gen(function* () {
-        const r = yield* exos-agent.spawn(["providers", "list"])
-        exos-agent.expectExit(r, 0, "providers list")
+        const r = yield* exosAgent.spawn(["providers", "list"])
+        exosAgent.expectExit(r, 0, "providers list")
         expect(r.stdout).toContain("Credentials")
       }),
     60_000,
@@ -53,10 +53,10 @@ describe("exos-agent read-only commands (smoke)", () => {
   // should appear because it's wired into the test provider config.
   cliIt.live(
     "models: exits 0 and lists the test model",
-    ({ exos-agent }) =>
+    ({ exosAgent }) =>
       Effect.gen(function* () {
-        const r = yield* exos-agent.spawn(["models"])
-        exos-agent.expectExit(r, 0, "models")
+        const r = yield* exosAgent.spawn(["models"])
+        exosAgent.expectExit(r, 0, "models")
         expect(r.stdout).toContain("test/test-model")
       }),
     60_000,
@@ -67,10 +67,10 @@ describe("exos-agent read-only commands (smoke)", () => {
   // similar. We don't pin the message — just exit cleanly.
   cliIt.live(
     "agent list: exits 0",
-    ({ exos-agent }) =>
+    ({ exosAgent }) =>
       Effect.gen(function* () {
-        const r = yield* exos-agent.spawn(["agent", "list"])
-        exos-agent.expectExit(r, 0, "agent list")
+        const r = yield* exosAgent.spawn(["agent", "list"])
+        exosAgent.expectExit(r, 0, "agent list")
       }),
     60_000,
   )
@@ -79,10 +79,10 @@ describe("exos-agent read-only commands (smoke)", () => {
   // empty DB. Exit 0 with no sessions.
   cliIt.live(
     "session list: exits 0",
-    ({ exos-agent }) =>
+    ({ exosAgent }) =>
       Effect.gen(function* () {
-        const r = yield* exos-agent.spawn(["session", "list"])
-        exos-agent.expectExit(r, 0, "session list")
+        const r = yield* exosAgent.spawn(["session", "list"])
+        exosAgent.expectExit(r, 0, "session list")
       }),
     60_000,
   )
@@ -90,10 +90,10 @@ describe("exos-agent read-only commands (smoke)", () => {
   // `stats` aggregates token usage from the session DB. Empty DB → all zeros.
   cliIt.live(
     "stats: exits 0",
-    ({ exos-agent }) =>
+    ({ exosAgent }) =>
       Effect.gen(function* () {
-        const r = yield* exos-agent.spawn(["stats"])
-        exos-agent.expectExit(r, 0, "stats")
+        const r = yield* exosAgent.spawn(["stats"])
+        exosAgent.expectExit(r, 0, "stats")
       }),
     60_000,
   )
@@ -104,10 +104,10 @@ describe("exos-agent read-only commands (smoke)", () => {
   // Accept either form — both prove the resolver ran without crashing.
   cliIt.live(
     "db path: exits 0 and prints a path or :memory:",
-    ({ exos-agent }) =>
+    ({ exosAgent }) =>
       Effect.gen(function* () {
-        const r = yield* exos-agent.spawn(["db", "path"])
-        exos-agent.expectExit(r, 0, "db path")
+        const r = yield* exosAgent.spawn(["db", "path"])
+        exosAgent.expectExit(r, 0, "db path")
         expect(r.stdout.trim()).toMatch(/^(:memory:|[/\\].+\.(db|sqlite|sqlite3))$/i)
       }),
     60_000,

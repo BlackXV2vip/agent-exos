@@ -96,9 +96,9 @@ describe("exos-agent CLI help-text snapshots", () => {
   // versus ~1 minute if we serialized.
   cliIt.live(
     "every documented command emits stable help text",
-    ({ exos-agent }) =>
+    ({ exosAgent }) =>
       Effect.gen(function* () {
-        const topLevel = yield* exos-agent.spawn(["--help"], { env: SNAPSHOT_ENV })
+        const topLevel = yield* exosAgent.spawn(["--help"], { env: SNAPSHOT_ENV })
         expect(topLevel.exitCode).toBe(0)
         expect(topLevel.stderr.endsWith("\n")).toBe(true)
         expect(topLevel.stderr).toContain("--mini")
@@ -116,7 +116,7 @@ describe("exos-agent CLI help-text snapshots", () => {
           argvs,
           (argv) =>
             Effect.gen(function* () {
-              const result = yield* exos-agent.spawn([...argv, "--help"], { env: SNAPSHOT_ENV })
+              const result = yield* exosAgent.spawn([...argv, "--help"], { env: SNAPSHOT_ENV })
               if (result.exitCode !== 0) {
                 return yield* Effect.fail(`exos-agent ${argv.join(" ")}: exit ${result.exitCode}`)
               }

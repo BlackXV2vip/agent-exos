@@ -6,9 +6,9 @@ import { cliIt } from "../lib/cli-process"
 describe("exos-agent mcp add (non-interactive subprocess)", () => {
   cliIt.concurrent(
     "adds a remote server with HTTP headers",
-    ({ home, exos-agent }) =>
+    ({ home, exosAgent }) =>
       Effect.gen(function* () {
-        const result = yield* exos-agent.spawn([
+        const result = yield* exosAgent.spawn([
           "mcp",
           "add",
           "github",
@@ -19,7 +19,7 @@ describe("exos-agent mcp add (non-interactive subprocess)", () => {
           "--header",
           "X-Option=one=two",
         ])
-        exos-agent.expectExit(result, 0)
+        exosAgent.expectExit(result, 0)
 
         const config = yield* Effect.promise(() =>
           Bun.file(path.join(home, ".config", "exos-agent", "exos-agent.json")).json(),
@@ -38,9 +38,9 @@ describe("exos-agent mcp add (non-interactive subprocess)", () => {
 
   cliIt.concurrent(
     "adds a local server while preserving argv and environment values",
-    ({ home, exos-agent }) =>
+    ({ home, exosAgent }) =>
       Effect.gen(function* () {
-        const result = yield* exos-agent.spawn([
+        const result = yield* exosAgent.spawn([
           "mcp",
           "add",
           "local",
@@ -55,7 +55,7 @@ describe("exos-agent mcp add (non-interactive subprocess)", () => {
           "--label",
           "two words",
         ])
-        exos-agent.expectExit(result, 0)
+        exosAgent.expectExit(result, 0)
 
         const config = yield* Effect.promise(() =>
           Bun.file(path.join(home, ".config", "exos-agent", "exos-agent.json")).json(),

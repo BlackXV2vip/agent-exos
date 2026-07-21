@@ -162,7 +162,7 @@ export const ExosAgentPlugin = define<HttpClient.HttpClient | EventV2.Service | 
         }
       }
 
-      const item = catalog.provider.get(ProviderV2.ID.exos-agent)
+      const item = catalog.provider.get(ProviderV2.ID["exos-agent"])
       if (!item) return
       const hasKey = Boolean(process.env.EXOS_AGENT_API_KEY || connected || item.provider.request.body.apiKey)
       catalog.provider.update(item.provider.id, (provider) => {

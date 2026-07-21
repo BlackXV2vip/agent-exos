@@ -372,7 +372,7 @@ describe("OpenAPI.fromSpec", () => {
   test("exposes real exos-agent operations through CodeMode discovery", async () => {
     const { layer } = recordingClient(() => json({}))
     const runtime = CodeMode.make({
-      tools: { exos-agent: OpenAPI.fromSpec({ spec: await exosAgentSpec(), baseUrl }).tools },
+      tools: { "exos-agent": OpenAPI.fromSpec({ spec: await exosAgentSpec(), baseUrl }).tools },
     })
     const result = await Effect.runPromise(
       runtime
@@ -403,7 +403,7 @@ describe("OpenAPI.fromSpec", () => {
       return json({ id: "ses_456" })
     })
     const runtime = CodeMode.make({
-      tools: { exos-agent: OpenAPI.fromSpec({ spec: await exosAgentSpec(), baseUrl }).tools },
+      tools: { "exos-agent": OpenAPI.fromSpec({ spec: await exosAgentSpec(), baseUrl }).tools },
     })
 
     const result = await Effect.runPromise(
@@ -806,7 +806,7 @@ describe("OpenAPI.fromSpec", () => {
   test("fails missing required parameters before auth and network", async () => {
     const { requests, layer } = recordingClient(() => json({}))
     const runtime = CodeMode.make({
-      tools: { exos-agent: OpenAPI.fromSpec({ spec: await exosAgentSpec(), baseUrl }).tools },
+      tools: { "exos-agent": OpenAPI.fromSpec({ spec: await exosAgentSpec(), baseUrl }).tools },
     })
 
     const result = await Effect.runPromise(

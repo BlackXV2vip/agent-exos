@@ -7,9 +7,9 @@ import { createAcpClient, expectErrorCode, initialize } from "./helpers"
 describe("exos-agent acp initialize/auth subprocess", () => {
   cliIt.live(
     "initialize responds with capabilities",
-    ({ exos-agent }) =>
+    ({ exosAgent }) =>
       Effect.gen(function* () {
-        const initialized = yield* initialize(yield* createAcpClient({ exos-agent }))
+        const initialized = yield* initialize(yield* createAcpClient({ exosAgent }))
 
         expect(initialized.protocolVersion).toBe(1)
         expect(initialized.agentCapabilities?.promptCapabilities?.embeddedContext).toBe(true)
@@ -28,9 +28,9 @@ describe("exos-agent acp initialize/auth subprocess", () => {
 
   cliIt.live(
     "auth negotiation is explicit and safe",
-    ({ exos-agent }) =>
+    ({ exosAgent }) =>
       Effect.gen(function* () {
-        const acp = yield* createAcpClient({ exos-agent })
+        const acp = yield* createAcpClient({ exosAgent })
         const initialized = yield* initialize(acp)
 
         expect(initialized.authMethods?.[0]?.id).toBe("exos-agent-login")
@@ -48,9 +48,9 @@ describe("exos-agent acp initialize/auth subprocess", () => {
 
   cliIt.live(
     "initialize without terminal-auth metadata keeps auth command implicit",
-    ({ exos-agent }) =>
+    ({ exosAgent }) =>
       Effect.gen(function* () {
-        const acp = yield* createAcpClient({ exos-agent })
+        const acp = yield* createAcpClient({ exosAgent })
         const initialized = yield* acp.request<InitializeResponse>("initialize", { protocolVersion: 1 })
 
         expect(initialized.result?.authMethods?.[0]?.id).toBe("exos-agent-login")

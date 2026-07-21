@@ -3,11 +3,11 @@
 import { ExosAgent } from "@exos-agent/core"
 import { ReadTool } from "@exos-agent/core/tools"
 
-const exos-agent = ExosAgent.make({})
+const exosAgent = ExosAgent.make({})
 
-exos-agent.tool.add(ReadTool)
+exosAgent.tool.add(ReadTool)
 
-exos-agent.tool.add({
+exosAgent.tool.add({
   name: "bash",
   schema: {
     type: "object",
@@ -22,13 +22,13 @@ exos-agent.tool.add({
   execute(input, ctx) {},
 })
 
-exos-agent.auth.add({
+exosAgent.auth.add({
   provider: "openai",
   type: "api",
   value: process.env.OPENAI_API_KEY,
 })
 
-exos-agent.agent.add({
+exosAgent.agent.add({
   name: "build",
   permissions: [],
   model: {
@@ -38,20 +38,20 @@ exos-agent.agent.add({
   },
 })
 
-const sessionID = await exos-agent.session.create({
+const sessionID = await exosAgent.session.create({
   agent: "build",
 })
 
-exos-agent.subscribe((event) => {
+exosAgent.subscribe((event) => {
   console.log(event)
 })
 
-await exos-agent.session.prompt({
+await exosAgent.session.prompt({
   sessionID,
   text: "hey what is up",
 })
 
-await exos-agent.session.prompt({
+await exosAgent.session.prompt({
   sessionID,
   text: "what is up with this",
   files: [
@@ -62,6 +62,6 @@ await exos-agent.session.prompt({
   ],
 })
 
-await exos-agent.session.wait()
+await exosAgent.session.wait()
 
-console.log(await exos-agent.session.messages(sessionID))
+console.log(await exosAgent.session.messages(sessionID))

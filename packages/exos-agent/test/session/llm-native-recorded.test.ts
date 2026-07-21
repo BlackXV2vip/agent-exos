@@ -161,7 +161,7 @@ const RECORDED_SCENARIOS = [
   {
     id: "exos-agent-proxy",
     name: "ExosAgent proxy",
-    providerID: ProviderV2.ID.exos-agent,
+    providerID: ProviderV2.ID["exos-agent"],
     modelID: "gpt-5.2-codex",
     cassette: "session/native-zen-tool-loop",
     protocol: "openai-responses",
@@ -169,7 +169,7 @@ const RECORDED_SCENARIOS = [
     canRecord: () => Boolean(process.env.EXOS_AGENT_RECORD_CONSOLE_TOKEN && process.env.EXOS_AGENT_RECORD_ZEN_ORG_ID),
     config: (model) =>
       providerConfig({
-        providerID: ProviderV2.ID.exos-agent,
+        providerID: ProviderV2.ID["exos-agent"],
         name: "ExosAgent Zen",
         env: ["EXOS_AGENT_CONSOLE_TOKEN"],
         npm: "@ai-sdk/openai-compatible",

@@ -2634,7 +2634,7 @@ describe("ProviderTransform.message - strip openai metadata when store=false", (
             type: "text",
             text: "Hello",
             providerOptions: {
-              exos-agent: {
+              "exos-agent": {
                 itemId: "msg_123",
                 otherOption: "value",
               },
@@ -2665,7 +2665,7 @@ describe("ProviderTransform.message - strip openai metadata when store=false", (
         role: "assistant",
         providerOptions: {
           openai: { itemId: "msg_root" },
-          exos-agent: { itemId: "msg_exos-agent" },
+          "exos-agent": { itemId: "msg_exos-agent" },
           extra: { itemId: "msg_extra" },
         },
         content: [
@@ -2674,7 +2674,7 @@ describe("ProviderTransform.message - strip openai metadata when store=false", (
             text: "Hello",
             providerOptions: {
               openai: { itemId: "msg_openai_part" },
-              exos-agent: { itemId: "msg_exos-agent_part" },
+              "exos-agent": { itemId: "msg_exos-agent_part" },
               extra: { itemId: "msg_extra_part" },
             },
           },

@@ -13,11 +13,11 @@ const tinyPng = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8
 describe("exos-agent acp prompt content subprocess", () => {
   cliIt.live(
     "accepts embedded text resource image and file resource link prompt content",
-    ({ home, llm, exos-agent }) =>
+    ({ home, llm, exosAgent }) =>
       Effect.gen(function* () {
         yield* Effect.promise(() => writeFile(path.join(home, "README.md"), "# ACP content smoke\n"))
         const acp = yield* createAcpClient(
-          { exos-agent },
+          { exosAgent },
           { EXOS_AGENT_CONFIG_CONTENT: JSON.stringify(promptContentConfig(llm.url)) },
         )
         yield* initialize(acp)

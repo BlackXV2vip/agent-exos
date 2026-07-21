@@ -226,7 +226,7 @@ export const githubInstall = Effect.fn("Cli.github.install")(function* () {
 
       async function promptProvider() {
         const priority: Record<string, number> = {
-          exos-agent: 0,
+          "exos-agent": 0,
           anthropic: 1,
           openai: 2,
           google: 3,
@@ -343,7 +343,7 @@ on:
     types: [created]
 
 jobs:
-  exos-agent:
+  "exos-agent":
     if: |
       contains(github.event.comment.body, ' /oc') ||
       startsWith(github.event.comment.body, '/oc') ||

@@ -101,7 +101,7 @@ app.message(async ({ message, say }) => {
     }
   }
 
-  console.log("📝 Sending to exos-agent:", message.text)
+  console.log("📝 Sending to "exos-agent":", message.text)
   const result = await session.client.session.prompt({
     path: { id: session.sessionId },
     body: { parts: [{ type: "text", text: message.text }] },

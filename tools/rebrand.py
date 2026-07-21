@@ -67,6 +67,21 @@ def rules(prose: bool):
     ]
 
 
+# External npm packages that merely CONTAIN the old name — they live on the
+# registry and are NOT part of this repo, so their names must be restored
+# after the token pass (keeps the pipeline idempotent).
+PRESERVE = [
+    ("exos-agent-gitlab-auth", "opencode-gitlab-auth"),
+    ("exos-agent-poe-auth", "opencode-poe-auth"),
+]
+
+
+def preserve_externals(text: str) -> str:
+    for wrong, right in PRESERVE:
+        text = text.replace(wrong, right)
+    return text
+
+
 CODE_RULES = rules(prose=False)
 PROSE_RULES = rules(prose=True)
 
@@ -99,7 +114,7 @@ def transform(path: str, text: str) -> str:
     if ext not in PROSE_EXT:
         for r, rep in CODE_RULES:
             text = r.sub(rep, text)
-        return text
+        return preserve_externals(text)
     in_fence = False
     lines = []
     for line in text.splitlines(keepends=True):
@@ -116,7 +131,7 @@ def transform(path: str, text: str) -> str:
             lines.append(line)
         else:
             lines.append(transform_prose_line(line))
-    return "".join(lines)
+    return preserve_externals("".join(lines))
 
 
 def new_path(path: str) -> str:

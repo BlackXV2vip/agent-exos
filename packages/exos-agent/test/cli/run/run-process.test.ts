@@ -13,11 +13,11 @@ describe("exos-agent run (non-interactive subprocess)", () => {
   // If this fails, all the others likely will too — debug here first.
   cliIt.concurrent(
     "exits 0 and writes the response to stdout on a successful prompt",
-    ({ llm, exos-agent }) =>
+    ({ llm, exosAgent }) =>
       Effect.gen(function* () {
         yield* llm.text("hello from the test llm")
-        const result = yield* exos-agent.run("say hi")
-        exos-agent.expectExit(result, 0)
+        const result = yield* exosAgent.run("say hi")
+        exosAgent.expectExit(result, 0)
         expect(result.stdout).toBe("hello from the test llm\n")
       }),
     60_000,
@@ -25,7 +25,7 @@ describe("exos-agent run (non-interactive subprocess)", () => {
 
   cliIt.concurrent(
     "prints each completed text part in order around a tool continuation",
-    ({ llm, exos-agent }) =>
+    ({ llm, exosAgent }) =>
       Effect.gen(function* () {
         yield* llm.push(
           reply().text("  before tool  ").tool("bash", {
@@ -35,11 +35,11 @@ describe("exos-agent run (non-interactive subprocess)", () => {
         )
         yield* llm.text("  after tool  ")
 
-        const result = yield* exos-agent.run("use a tool", {
+        const result = yield* exosAgent.run("use a tool", {
           extraArgs: ["--dangerously-skip-permissions"],
         })
 
-        exos-agent.expectExit(result, 0)
+        exosAgent.expectExit(result, 0)
         expect(result.stdout).toBe("before tool\nafter tool\n")
       }),
     60_000,
@@ -47,16 +47,16 @@ describe("exos-agent run (non-interactive subprocess)", () => {
 
   cliIt.concurrent(
     "prints reasoning before text only with --thinking",
-    ({ llm, exos-agent }) =>
+    ({ llm, exosAgent }) =>
       Effect.gen(function* () {
         yield* llm.reason("  considering  ", { text: "  answer  " })
-        const thinking = yield* exos-agent.run("think", { extraArgs: ["--thinking"] })
-        exos-agent.expectExit(thinking, 0)
+        const thinking = yield* exosAgent.run("think", { extraArgs: ["--thinking"] })
+        exosAgent.expectExit(thinking, 0)
         expect(thinking.stdout).toBe("Thinking: considering\nanswer\n")
 
         yield* llm.reason("hidden", { text: "visible" })
-        const plain = yield* exos-agent.run("think again")
-        exos-agent.expectExit(plain, 0)
+        const plain = yield* exosAgent.run("think again")
+        exosAgent.expectExit(plain, 0)
         expect(plain.stdout).toBe("visible\n")
       }),
     60_000,
@@ -69,9 +69,9 @@ describe("exos-agent run (non-interactive subprocess)", () => {
   // would expire the timeout and produce a different (signal-killed) failure.
   cliIt.concurrent(
     "exits nonzero promptly when the model is unknown (regression for #27371)",
-    ({ exos-agent }) =>
+    ({ exosAgent }) =>
       Effect.gen(function* () {
-        const result = yield* exos-agent.run("say hi", {
+        const result = yield* exosAgent.run("say hi", {
           model: "test/nonexistent-model",
           timeoutMs: 15_000,
         })
@@ -86,7 +86,7 @@ describe("exos-agent run (non-interactive subprocess)", () => {
   // is not accidentally used as the failure compatibility oracle.
   cliIt.concurrent(
     "unknown stream finish preserves partial output and exits 0",
-    ({ llm, exos-agent }) =>
+    ({ llm, exosAgent }) =>
       Effect.gen(function* () {
         yield* llm.push(
           reply().text("partial response").tool("bash", {
@@ -95,7 +95,7 @@ describe("exos-agent run (non-interactive subprocess)", () => {
           }),
         )
         yield* llm.fail("upstream provider exploded mid-stream")
-        const result = yield* exos-agent.run("trigger midstream error", { timeoutMs: 30_000 })
+        const result = yield* exosAgent.run("trigger midstream error", { timeoutMs: 30_000 })
         expect(result.exitCode).toBe(0)
         expect(result.stdout).toBe("partial response\n")
         expect(result.stderr).not.toContain("upstream provider exploded mid-stream")
@@ -108,13 +108,13 @@ describe("exos-agent run (non-interactive subprocess)", () => {
   // shape so a future event-emit change has to update this expectation.
   cliIt.concurrent(
     "--format json emits parseable line-delimited JSON to stdout",
-    ({ llm, exos-agent }) =>
+    ({ llm, exosAgent }) =>
       Effect.gen(function* () {
         yield* llm.text("structured output")
-        const result = yield* exos-agent.run("say hi", { format: "json" })
-        exos-agent.expectExit(result, 0)
+        const result = yield* exosAgent.run("say hi", { format: "json" })
+        exosAgent.expectExit(result, 0)
 
-        const events = exos-agent.parseJsonEvents(result.stdout)
+        const events = exosAgent.parseJsonEvents(result.stdout)
         expect(events.length).toBeGreaterThan(0)
         for (const evt of events) {
           expect(typeof evt.type).toBe("string")
@@ -142,15 +142,15 @@ describe("exos-agent run (non-interactive subprocess)", () => {
 
   cliIt.concurrent(
     "--format json emits a pure error record for a rejected prompt request",
-    ({ exos-agent }) =>
+    ({ exosAgent }) =>
       Effect.gen(function* () {
-        const result = yield* exos-agent.run("use an unknown model", {
+        const result = yield* exosAgent.run("use an unknown model", {
           model: "test/nonexistent-model",
           format: "json",
         })
 
         expect(result.exitCode).not.toBe(0)
-        const events = exos-agent.parseJsonEvents(result.stdout)
+        const events = exosAgent.parseJsonEvents(result.stdout)
         expect(events.map((event) => event.type)).toEqual(["error"])
         expect(events[0]).toEqual({
           type: "error",
@@ -165,7 +165,7 @@ describe("exos-agent run (non-interactive subprocess)", () => {
 
   cliIt.concurrent(
     "--format json preserves reasoning, tool, and continuation ordering",
-    ({ llm, exos-agent }) =>
+    ({ llm, exosAgent }) =>
       Effect.gen(function* () {
         yield* llm.push(
           reply().reason("reasoning").text("before").tool("bash", {
@@ -175,13 +175,13 @@ describe("exos-agent run (non-interactive subprocess)", () => {
         )
         yield* llm.text("after")
 
-        const result = yield* exos-agent.run("exercise json records", {
+        const result = yield* exosAgent.run("exercise json records", {
           format: "json",
           extraArgs: ["--thinking", "--dangerously-skip-permissions"],
         })
 
         expect(result.exitCode).toBe(0)
-        const events = exos-agent.parseJsonEvents(result.stdout)
+        const events = exosAgent.parseJsonEvents(result.stdout)
         expect(events.map((event) => event.type)).toEqual([
           "step_start",
           "reasoning",
@@ -214,7 +214,7 @@ describe("exos-agent run (non-interactive subprocess)", () => {
 
   cliIt.concurrent(
     "--format json records partial output for an unknown stream finish",
-    ({ llm, exos-agent }) =>
+    ({ llm, exosAgent }) =>
       Effect.gen(function* () {
         yield* llm.push(
           reply().text("partial json").tool("bash", {
@@ -223,9 +223,9 @@ describe("exos-agent run (non-interactive subprocess)", () => {
           }),
         )
         yield* llm.fail("provider failed")
-        const result = yield* exos-agent.run("fail after output", { format: "json" })
+        const result = yield* exosAgent.run("fail after output", { format: "json" })
 
-        const events = exos-agent.parseJsonEvents(result.stdout)
+        const events = exosAgent.parseJsonEvents(result.stdout)
         expect(result.exitCode).toBe(0)
         expect(events.map((event) => event.type)).toEqual([
           "step_start",
@@ -243,34 +243,34 @@ describe("exos-agent run (non-interactive subprocess)", () => {
 
   cliIt.concurrent(
     "rejects requested permissions by default and allows them with the dangerous flag",
-    ({ home, llm, exos-agent }) =>
+    ({ home, llm, exosAgent }) =>
       Effect.gen(function* () {
         yield* llm.tool("bash", { command: "rm -f denied-file", description: "Remove a test file" })
         yield* llm.text("continued after rejection")
-        const denied = yield* exos-agent.run("request permission", { permission: { bash: "ask" } })
-        exos-agent.expectExit(denied, 0)
+        const denied = yield* exosAgent.run("request permission", { permission: { bash: "ask" } })
+        exosAgent.expectExit(denied, 0)
         expect(denied.stderr).toContain("permission requested: bash")
         expect(denied.stdout).toBe("")
 
         yield* llm.reset
         yield* llm.tool("bash", { command: "rm -f allowed-file", description: "Remove a test file" })
         yield* llm.text("continued after approval")
-        const allowed = yield* exos-agent.run("request permission", {
+        const allowed = yield* exosAgent.run("request permission", {
           permission: { bash: "ask" },
           extraArgs: ["--dangerously-skip-permissions"],
         })
-        exos-agent.expectExit(allowed, 0)
+        exosAgent.expectExit(allowed, 0)
         expect(allowed.stderr).not.toContain("permission requested: bash")
         expect(allowed.stdout).toContain("continued after approval")
 
         yield* llm.reset
         yield* llm.tool("bash", { command: "touch explicitly-denied", description: "Create a denied marker" })
         yield* llm.text("continued after explicit denial")
-        const explicitlyDenied = yield* exos-agent.run("request denied permission", {
+        const explicitlyDenied = yield* exosAgent.run("request denied permission", {
           permission: { bash: "deny" },
           extraArgs: ["--dangerously-skip-permissions"],
         })
-        exos-agent.expectExit(explicitlyDenied, 0)
+        exosAgent.expectExit(explicitlyDenied, 0)
         expect(explicitlyDenied.stdout).toContain("continued after explicit denial")
         expect(yield* Effect.promise(() => Bun.file(`${home}/explicitly-denied`).exists())).toBe(false)
       }),
@@ -279,19 +279,19 @@ describe("exos-agent run (non-interactive subprocess)", () => {
 
   cliIt.live(
     "attach mode sends client-local file contents without a shared path",
-    ({ home, llm, exos-agent }) =>
+    ({ home, llm, exosAgent }) =>
       Effect.gen(function* () {
         const source = `${home}/client-only.txt`
         const sentinel = "client-only attachment sentinel"
         yield* Effect.promise(() => Bun.write(source, sentinel))
         yield* llm.text("attachment received")
-        const server = yield* exos-agent.serve()
+        const server = yield* exosAgent.serve()
 
-        const result = yield* exos-agent.run("read the attachment", {
+        const result = yield* exosAgent.run("read the attachment", {
           extraArgs: ["--attach", server.url, `--file=${source}`, "--"],
         })
 
-        exos-agent.expectExit(result, 0)
+        exosAgent.expectExit(result, 0)
         const input = JSON.stringify(yield* llm.inputs)
         expect(input).toContain(sentinel)
         expect(input).not.toContain(`file://${source}`)
@@ -301,9 +301,9 @@ describe("exos-agent run (non-interactive subprocess)", () => {
 
   cliIt.concurrent(
     "attach mode rejects local directories before prompt admission",
-    ({ home, exos-agent }) =>
+    ({ home, exosAgent }) =>
       Effect.gen(function* () {
-        const result = yield* exos-agent.run("read the directory", {
+        const result = yield* exosAgent.run("read the directory", {
           extraArgs: ["--attach", "http://127.0.0.1:1", `--file=${home}`, "--"],
         })
 
@@ -315,10 +315,10 @@ describe("exos-agent run (non-interactive subprocess)", () => {
 
   cliIt.live(
     "SIGINT interrupts an active non-interactive run without leaking the process",
-    ({ llm, exos-agent }) =>
+    ({ llm, exosAgent }) =>
       Effect.gen(function* () {
         yield* llm.hang
-        const run = yield* exos-agent.startRun("wait forever")
+        const run = yield* exosAgent.startRun("wait forever")
         yield* llm.wait(1)
         run.interrupt()
         const result = yield* run.result

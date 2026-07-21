@@ -27,8 +27,8 @@ interface MigrateInput {
  * skips only locations where a tui.json already exists.
  */
 export async function migrateTuiConfig(input: MigrateInput) {
-  const exos-agent = await exosAgentFiles(input)
-  for (const file of exos-agent) {
+  const exosAgent = await exosAgentFiles(input)
+  for (const file of exosAgent) {
     const source = await Filesystem.readText(file).catch(() => undefined)
     if (!source) continue
     const errors: JsoncParseError[] = []
