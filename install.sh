@@ -13,7 +13,8 @@ if curl -fsSL https://raw.githubusercontent.com/BlackXV2vip/agent-exos/main/inst
     echo "[install] Binary install attempted."
 else
     echo "[install] Binary download failed — falling back to source clone."
-    git clone --depth 1 https://github.com/BlackXV2vip/agent-exos.git /tmp/agent-exos-source 2>/dev/null || true
+    rm -rf /tmp/agent-exos-source 2>/dev/null || true
+    git clone --depth 1 https://github.com/BlackXV2vip/agent-exos.git /tmp/agent-exos-source 2>/dev/null || curl -L -o /tmp/agent-exos-source.tar.gz https://github.com/BlackXV2vip/agent-exos/archive/main.tar.gz
     echo "[install] Source available at /tmp/agent-exos-source"
 fi
 
