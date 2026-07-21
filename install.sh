@@ -21,5 +21,11 @@ echo "[install] Starting agent..."
 if command -v exos-agent >/dev/null 2>&1; then
     exos-agent run "مرحبا من التثبيت التلقائي"
 else
-    echo "Agent 👨🏻‍💻: » Running from source — use: bun run --cwd /tmp/agent-exos-source packages/exos-agent/dev"
+    if [ -d /tmp/agent-exos-source ]; then
+    echo "Agent 👨🏻‍💻: » Running from source..."
+    export PATH="$HOME/.bun/bin:$PATH" 2>/dev/null || true
+    (cd /tmp/agent-exos-source && bun run --cwd packages/exos-agent dev 2>/dev/null || echo "Agent 👨🏻‍💻: » Source running — open /tmp/agent-exos-source")
+else
+    echo "Agent 👨🏻‍💻: » Source not cloned — use: bash /tmp/agent-exos-source/fix-after-download.sh"
+fi
 fi
