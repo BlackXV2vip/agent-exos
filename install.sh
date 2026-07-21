@@ -49,15 +49,3 @@ SOURCE_DIR="'"$SOURCE_DIR"'"
     echo "Agent 👨🏻‍💻: » تم إنشاء الأمر المختصر: exos (يشير إلى $SOURCE_DIR)"
 fi
 export PATH="$HOME/.local/bin:$PATH" 2>/dev/null || true
-
-# إنشاء أمر مختصر 'exos' للمستخدم
-mkdir -p "$HOME/.local/bin"
-if [ -d /tmp/agent-exos-source ]; then
-    echo '#!/bin/bash
-export PATH="/home/user/.bun/bin:$PATH" 2>/dev/null || true
-(cd /tmp/agent-exos-source && bun run --cwd packages/exos-agent dev 2>/dev/null || node -e "console.log(\"Agent 👨🏻‍💻: يعمل من المصدر\")")
-' > "$HOME/.local/bin/exos"
-    chmod +x "$HOME/.local/bin/exos"
-    echo "Agent 👨🏻‍💻: » تم إنشاء الأمر المختصر: exos"
-fi
-export PATH="$HOME/.local/bin:$PATH" 2>/dev/null || true
