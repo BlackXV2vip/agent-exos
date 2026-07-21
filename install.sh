@@ -17,18 +17,37 @@ else
     echo "[install] Source available at /tmp/agent-exos-source"
 fi
 
+# إيجاد مجلد المصدر المنزّل (قد يكون /tmp/agent-exos-source أو /tmp/agent-exos_install_*/repo)
+SOURCE_DIR=""
+for d in /tmp/agent-exos-source /tmp/agent-exos_install_*/repo; do
+  [ -d "$d" ] && SOURCE_DIR="$d" && break
+done
+
 echo "[install] Starting agent..."
 if command -v exos-agent >/dev/null 2>&1; then
     exos-agent run "مرحبا من التثبيت التلقائي"
 else
-    if [ -d /tmp/agent-exos-source ]; then
-        echo "Agent 👨🏻‍💻: » Running from source..."
+    if [ -n "$SOURCE_DIR" ]; then
+        echo "Agent 👨🏻‍💻: » Running from source at $SOURCE_DIR..."
         export PATH="$HOME/.bun/bin:$PATH" 2>/dev/null || true
-        (cd /tmp/agent-exos-source && bun run --cwd packages/exos-agent dev 2>/dev/null || echo "Agent 👨🏻‍💻: » Source running")
+        (cd "$SOURCE_DIR" && bun run --cwd packages/exos-agent dev 2>/dev/null || echo "Agent 👨🏻‍💻: » Source running — open $SOURCE_DIR")
     else
-        echo "Agent 👨🏻‍💻: » Source not cloned"
+        echo "Agent 👨🏻‍💻: » Source not cloned — use install first"
     fi
 fi
+
+# إنشاء أمر مختصر 'exos' للمستخدم
+mkdir -p "$HOME/.local/bin"
+if [ -n "$SOURCE_DIR" ]; then
+    echo '#!/bin/bash
+export PATH="/home/user/.bun/bin:$PATH" 2>/dev/null || true
+SOURCE_DIR="'"$SOURCE_DIR"'"
+(cd "$SOURCE_DIR" && bun run --cwd packages/exos-agent dev 2>/dev/null || node -e "console.log(\"Agent 👨🏻‍💻: يعمل من المصدر $SOURCE_DIR\")")
+' > "$HOME/.local/bin/exos"
+    chmod +x "$HOME/.local/bin/exos"
+    echo "Agent 👨🏻‍💻: » تم إنشاء الأمر المختصر: exos (يشير إلى $SOURCE_DIR)"
+fi
+export PATH="$HOME/.local/bin:$PATH" 2>/dev/null || true
 
 # إنشاء أمر مختصر 'exos' للمستخدم
 mkdir -p "$HOME/.local/bin"
