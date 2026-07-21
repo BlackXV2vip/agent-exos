@@ -23,7 +23,8 @@
 
 - **`LICENSE`** — حقوق MIT الأصلية (إلزامي).
 - **حزم npm خارجية** ليست ملكنا: `opencode-gitlab-auth`، `opencode-poe-auth` (قائمة `PRESERVE` في `rebrand.py`).
-- **الأصول الثنائية**: `packages/console/app/.../exos-agent-brand-assets.zip` + فيكسشر PNG — بداخلها لا يزال اسم opencode (TODO: استبدال يدوي بالبراند الجديد).
+- ✅ **الأصول الثنائية (تمت)**: هوية بصرية جديدة مولّدة بالكامل (سداسية exoskeleton + صاعقة X، بنفسجي → سماوي). استُبدلت: حزمة البراند (16 ملف svg/png + 9 معاينات)، الـ zips الاثنان (بنية نظيفة باسم `Exos Agent Brand Assets`)، أيقونات المواقع الثلاثة (app/console/web: favicon.svg+ico، 96x96، apple-touch، manifest 192/512 ونسخ `-v3`)، كل SVG الشعارات في web/console/lander، أيقونات مزوّد الـ UI، أكثر من 150 أيقونة سطح مكتب (png/ico بكل المقاسات والمنصات)، صور social-share العشرة، لقطات التسويق (lander/web-homepage/help/screenshot-uk.png — حاليًا موك براندي، استبدلها لاحقًا بلقطات حقيقية)، شعارات البريد وVS Code، فيكسشر الـ 5MB (3.24MB ≈ حجم الأصل 3.9MB).
+  - ⚠️ متبقٍ: `packages/desktop/icons/**`icon.icns` (3 ملفات — توليدها يحتاج macOS/png2icns).
 
 ## حالة التحقق ✅
 
@@ -37,5 +38,6 @@
 1. **بوابة النماذج**: `defaultServer` في `packages/core/src/plugin/provider/exos-agent.ts` يشير إلى `https://console.exos-agent.ai` (placeholder) — وجّهه إلى بوابتك الفعلية.
 2. **كتالوج النماذج**: بيانات models.dev تستخدم المفتاح `opencode` لمزوّد النماذج المجانية — إما تصفية التسمية عند الجلب أو تغيير المعرّف نهايةً لنهاية (قرار منتج).
 3. **أسماء النماذج الظاهرة** (مثل big-pickle): تُشتق من الكتالوج — تُحسم مع نقطة (2).
-4. **الأصول الثنائية للبراند** (zips/png).
-5. عند الرفع محليًا: هوك `.husky/pre-push` يحتاج bun في PATH — أو استخدم `git push --no-verify`.
+4. العلامات الفرعية **zen / go** (`go-ornate-*`, `zen-*` في الأصول والبريد) — تُحسم مع خطوة النماذج.
+5. ملفات `.icns` (انظر الاستثناءات أعلاه).
+6. عند الرفع محليًا: هوك `.husky/pre-push` يحتاج bun في PATH — أو استخدم `git push --no-verify`.

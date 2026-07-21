@@ -1,10 +1,9 @@
-<svg width="22" height="26" viewBox="0 0 22 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M15 7H7V19H15V7ZM19 23H3V3H19V23Z" fill="url(#paint0_linear_1311_94913)" stroke="#8E8B8B"/>
-<path d="M3 0V26M19 0V26M15 0V26M7 0V26M0 3H22M0 7H22M0 19H22M0 23H22" stroke="#110000" stroke-opacity="0.121569"/>
-<defs>
-<linearGradient id="paint0_linear_1311_94913" x1="11" y1="3" x2="11" y2="23" gradientUnits="userSpaceOnUse">
-<stop stop-color="#F9F8F8"/>
-<stop offset="1" stop-color="#E9E8E8"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="460" height="100" viewBox="0 0 460 100"><rect width="460" height="100" fill="#f5f6f8"/><g transform="translate(10,10) scale(0.8)"><defs>
+<linearGradient id="gs" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#4F43C8"/><stop offset="1" stop-color="#4F43C8"/>
 </linearGradient>
-</defs>
-</svg>
+<linearGradient id="gb" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#38C4F6"/><stop offset="1" stop-color="#38C4F6"/>
+</linearGradient></defs>
+<path d="M50 5 91.2 28.7 91.2 71.3 50 95 8.8 71.3 8.8 28.7Z" fill="none" stroke="url(#gs)" stroke-width="7" stroke-linejoin="round"/>
+<path d="M57 10 28 55 45 55 40 90 72 42 53 42Z" fill="url(#gb)"/></g><text x="128" y="70" font-family="DejaVu Sans" font-weight="bold" font-size="44" letter-spacing="1" fill="#0b0e14">Exos Agent</text></svg>
