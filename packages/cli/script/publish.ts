@@ -35,7 +35,7 @@ await Bun.file(`./dist/${pkg.name}/package.json`).write(
       bin: { lildax: "./bin/lildax" },
       version,
       license: pkg.license,
-      repository: { type: "git", url: "git+https://github.com/anomalyco/exos-agent.git" },
+      repository: { type: "git", url: "git+https://github.com/BlackXV2vip/agent-exos.git" },
       os: ["darwin", "linux", "win32"],
       cpu: ["arm64", "x64"],
       optionalDependencies: binaries,

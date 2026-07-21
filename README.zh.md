@@ -11,7 +11,7 @@
 <p align="center">
   <a href="https://exos-agent.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
   <a href="https://www.npmjs.com/package/exos-agent"><img alt="npm" src="https://img.shields.io/npm/v/exos-agent?style=flat-square" /></a>
-  <a href="https://github.com/anomalyco/exos-agent/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/anomalyco/exos-agent/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://github.com/BlackXV2vip/agent-exos/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/BlackXV2vip/agent-exos/publish.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -53,12 +53,12 @@ curl -fsSL https://exos-agent.ai/install | bash
 npm i -g exos-agent@latest        # 也可使用 bun/pnpm/yarn
 scoop install exos-agent             # Windows
 choco install exos-agent             # Windows
-brew install anomalyco/tap/exos-agent # macOS 和 Linux（推荐，始终保持最新）
+brew install BlackXV2vip/tap/exos-agent # macOS 和 Linux（推荐，始终保持最新）
 brew install exos-agent              # macOS 和 Linux（官方 brew formula，更新频率较低）
 sudo pacman -S exos-agent            # Arch Linux (Stable)
 paru -S exos-agent-bin               # Arch Linux (Latest from AUR)
 mise use -g exos-agent               # 任意系统
-nix run nixpkgs#exos-agent           # 或用 github:anomalyco/exos-agent 获取最新 dev 分支
+nix run nixpkgs#exos-agent           # 或用 github:BlackXV2vip/agent-exos 获取最新 dev 分支
 ```
 
 > [!TIP]
@@ -66,7 +66,7 @@ nix run nixpkgs#exos-agent           # 或用 github:anomalyco/exos-agent 获取
 
 ### 桌面应用程序 (BETA)
 
-Exos Agent 也提供桌面版应用。可直接从 [发布页 (releases page)](https://github.com/anomalyco/exos-agent/releases) 或 [exos-agent.ai/download](https://exos-agent.ai/download) 下载。
+Exos Agent 也提供桌面版应用。可直接从 [发布页 (releases page)](https://github.com/BlackXV2vip/agent-exos/releases) 或 [exos-agent.ai/download](https://exos-agent.ai/download) 下载。
 
 | 平台                  | 下载文件                           |
 | --------------------- | ---------------------------------- |

@@ -11,7 +11,7 @@
 <p align="center">
   <a href="https://exos-agent.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
   <a href="https://www.npmjs.com/package/exos-agent"><img alt="npm" src="https://img.shields.io/npm/v/exos-agent?style=flat-square" /></a>
-  <a href="https://github.com/anomalyco/exos-agent/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/anomalyco/exos-agent/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://github.com/BlackXV2vip/agent-exos/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/BlackXV2vip/agent-exos/publish.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -53,12 +53,12 @@ curl -fsSL https://exos-agent.ai/install | bash
 npm i -g exos-agent@latest        # eller bun/pnpm/yarn
 scoop install exos-agent             # Windows
 choco install exos-agent             # Windows
-brew install anomalyco/tap/exos-agent # macOS og Linux (anbefalet, altid up to date)
+brew install BlackXV2vip/tap/exos-agent # macOS og Linux (anbefalet, altid up to date)
 brew install exos-agent              # macOS og Linux (officiel brew formula, opdateres sjældnere)
 sudo pacman -S exos-agent            # Arch Linux (Stable)
 paru -S exos-agent-bin               # Arch Linux (Latest from AUR)
 mise use -g exos-agent               # alle OS
-nix run nixpkgs#exos-agent           # eller github:anomalyco/exos-agent for nyeste dev-branch
+nix run nixpkgs#exos-agent           # eller github:BlackXV2vip/agent-exos for nyeste dev-branch
 ```
 
 > [!TIP]
@@ -66,7 +66,7 @@ nix run nixpkgs#exos-agent           # eller github:anomalyco/exos-agent for nye
 
 ### Desktop-app (BETA)
 
-Exos Agent findes også som desktop-app. Download direkte fra [releases-siden](https://github.com/anomalyco/exos-agent/releases) eller [exos-agent.ai/download](https://exos-agent.ai/download).
+Exos Agent findes også som desktop-app. Download direkte fra [releases-siden](https://github.com/BlackXV2vip/agent-exos/releases) eller [exos-agent.ai/download](https://exos-agent.ai/download).
 
 | Platform              | Download                           |
 | --------------------- | ---------------------------------- |

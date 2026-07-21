@@ -38,13 +38,13 @@ import { McpBrowser } from "./browser"
 const DEFAULT_TIMEOUT = 30_000
 const CLIENT_OPTIONS = {
   capabilities: {
-    // https://github.com/anomalyco/exos-agent/issues/11948
+    // https://github.com/BlackXV2vip/agent-exos/issues/11948
     // sampling: {},
-    // https://github.com/anomalyco/exos-agent/issues/23066
+    // https://github.com/BlackXV2vip/agent-exos/issues/23066
     // elicitation: {},
-    // https://github.com/anomalyco/exos-agent/issues/2308
+    // https://github.com/BlackXV2vip/agent-exos/issues/2308
     roots: {},
-    // https://github.com/anomalyco/exos-agent/issues/28567
+    // https://github.com/BlackXV2vip/agent-exos/issues/28567
     // tasks: {},
   },
 } satisfies ClientOptions

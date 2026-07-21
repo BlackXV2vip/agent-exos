@@ -7,11 +7,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anomalyco/exos-agent.git",
+    "url": "git+https://github.com/BlackXV2vip/agent-exos.git",
     "directory": "packages/http-recorder"
   },
-  "homepage": "https://github.com/anomalyco/exos-agent/tree/dev/packages/http-recorder",
-  "bugs": "https://github.com/anomalyco/exos-agent/issues",
+  "homepage": "https://github.com/BlackXV2vip/agent-exos/tree/dev/packages/http-recorder",
+  "bugs": "https://github.com/BlackXV2vip/agent-exos/issues",
   "keywords": [
     "effect",
     "http",

@@ -11,7 +11,7 @@
 <p align="center">
   <a href="https://exos-agent.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
   <a href="https://www.npmjs.com/package/exos-agent"><img alt="npm" src="https://img.shields.io/npm/v/exos-agent?style=flat-square" /></a>
-  <a href="https://github.com/anomalyco/exos-agent/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/anomalyco/exos-agent/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://github.com/BlackXV2vip/agent-exos/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/BlackXV2vip/agent-exos/publish.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -53,12 +53,12 @@ curl -fsSL https://exos-agent.ai/install | bash
 npm i -g exos-agent@latest        # bun/pnpm/yarn 도 가능
 scoop install exos-agent             # Windows
 choco install exos-agent             # Windows
-brew install anomalyco/tap/exos-agent # macOS 및 Linux (권장, 항상 최신)
+brew install BlackXV2vip/tap/exos-agent # macOS 및 Linux (권장, 항상 최신)
 brew install exos-agent              # macOS 및 Linux (공식 brew formula, 업데이트 빈도 낮음)
 sudo pacman -S exos-agent            # Arch Linux (Stable)
 paru -S exos-agent-bin               # Arch Linux (Latest from AUR)
 mise use -g exos-agent               # 어떤 OS든
-nix run nixpkgs#exos-agent           # 또는 github:anomalyco/exos-agent 로 최신 dev 브랜치
+nix run nixpkgs#exos-agent           # 또는 github:BlackXV2vip/agent-exos 로 최신 dev 브랜치
 ```
 
 > [!TIP]
@@ -66,7 +66,7 @@ nix run nixpkgs#exos-agent           # 또는 github:anomalyco/exos-agent 로 �
 
 ### 데스크톱 앱 (BETA)
 
-Exos Agent 는 데스크톱 앱으로도 제공됩니다. [releases page](https://github.com/anomalyco/exos-agent/releases) 에서 직접 다운로드하거나 [exos-agent.ai/download](https://exos-agent.ai/download) 를 이용하세요.
+Exos Agent 는 데스크톱 앱으로도 제공됩니다. [releases page](https://github.com/BlackXV2vip/agent-exos/releases) 에서 직접 다운로드하거나 [exos-agent.ai/download](https://exos-agent.ai/download) 를 이용하세요.
 
 | 플랫폼                | 다운로드                           |
 | --------------------- | ---------------------------------- |

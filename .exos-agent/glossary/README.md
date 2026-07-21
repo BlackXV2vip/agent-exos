@@ -33,7 +33,7 @@ Prefer guidance that is:
 
 ## Sources
 
-- PR #12345: https://github.com/anomalyco/exos-agent/pull/12345
+- PR #12345: https://github.com/BlackXV2vip/agent-exos/pull/12345
 
 ## Do Not Translate (Locale Additions)
 

@@ -9,7 +9,7 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   stats:
-    if: github.repository == 'anomalyco/exos-agent'
+    if: github.repository == 'BlackXV2vip/agent-exos'
     runs-on: blacksmith-4vcpu-ubuntu-2404
     permissions:
       contents: write

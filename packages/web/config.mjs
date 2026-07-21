@@ -5,7 +5,7 @@ export default {
   console: stage === "production" ? "https://exos-agent.ai/auth" : `https://${stage}.exos-agent.ai/auth`,
   email: "help@anoma.ly",
   socialCard: "https://social-cards.sst.dev",
-  github: "https://github.com/anomalyco/exos-agent",
+  github: "https://github.com/BlackXV2vip/agent-exos",
   discord: "https://exos-agent.ai/discord",
   headerLinks: [
     { name: "app.header.home", url: "/" },

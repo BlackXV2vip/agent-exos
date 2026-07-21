@@ -362,7 +362,7 @@ jobs:
           persist-credentials: false
 
       - name: Run exos-agent
-        uses: anomalyco/exos-agent/github@latest${envStr}
+        uses: BlackXV2vip/agent-exos/github@latest${envStr}
         with:
           model: ${provider}/${model}`,
         )

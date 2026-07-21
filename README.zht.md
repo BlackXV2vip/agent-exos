@@ -11,7 +11,7 @@
 <p align="center">
   <a href="https://exos-agent.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
   <a href="https://www.npmjs.com/package/exos-agent"><img alt="npm" src="https://img.shields.io/npm/v/exos-agent?style=flat-square" /></a>
-  <a href="https://github.com/anomalyco/exos-agent/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/anomalyco/exos-agent/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://github.com/BlackXV2vip/agent-exos/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/BlackXV2vip/agent-exos/publish.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -53,12 +53,12 @@ curl -fsSL https://exos-agent.ai/install | bash
 npm i -g exos-agent@latest        # 也可使用 bun/pnpm/yarn
 scoop install exos-agent             # Windows
 choco install exos-agent             # Windows
-brew install anomalyco/tap/exos-agent # macOS 與 Linux（推薦，始終保持最新）
+brew install BlackXV2vip/tap/exos-agent # macOS 與 Linux（推薦，始終保持最新）
 brew install exos-agent              # macOS 與 Linux（官方 brew formula，更新頻率較低）
 sudo pacman -S exos-agent            # Arch Linux (Stable)
 paru -S exos-agent-bin               # Arch Linux (Latest from AUR)
 mise use -g exos-agent               # 任何作業系統
-nix run nixpkgs#exos-agent           # 或使用 github:anomalyco/exos-agent 以取得最新開發分支
+nix run nixpkgs#exos-agent           # 或使用 github:BlackXV2vip/agent-exos 以取得最新開發分支
 ```
 
 > [!TIP]
@@ -66,7 +66,7 @@ nix run nixpkgs#exos-agent           # 或使用 github:anomalyco/exos-agent 以
 
 ### 桌面應用程式 (BETA)
 
-Exos Agent 也提供桌面版應用程式。您可以直接從 [發佈頁面 (releases page)](https://github.com/anomalyco/exos-agent/releases) 或 [exos-agent.ai/download](https://exos-agent.ai/download) 下載。
+Exos Agent 也提供桌面版應用程式。您可以直接從 [發佈頁面 (releases page)](https://github.com/BlackXV2vip/agent-exos/releases) 或 [exos-agent.ai/download](https://exos-agent.ai/download) 下載。
 
 | 平台                  | 下載連結                           |
 | --------------------- | ---------------------------------- |

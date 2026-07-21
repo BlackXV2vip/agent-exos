@@ -8,8 +8,8 @@ import { route, type Locale } from "../lib/language"
 export type HeaderLink = { href: string; label: string }
 
 export const githubLink = {
-  href: "https://github.com/anomalyco/exos-agent",
-  apiHref: "https://api.github.com/repos/anomalyco/exos-agent",
+  href: "https://github.com/BlackXV2vip/agent-exos",
+  apiHref: "https://api.github.com/repos/BlackXV2vip/agent-exos",
   fallbackStars: "150K",
 }
 export const themePreferences = ["dark", "light", "system"] as const

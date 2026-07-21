@@ -11,7 +11,7 @@
 <p align="center">
   <a href="https://exos-agent.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
   <a href="https://www.npmjs.com/package/exos-agent"><img alt="npm" src="https://img.shields.io/npm/v/exos-agent?style=flat-square" /></a>
-  <a href="https://github.com/anomalyco/exos-agent/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/anomalyco/exos-agent/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://github.com/BlackXV2vip/agent-exos/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/BlackXV2vip/agent-exos/publish.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -58,7 +58,7 @@ brew install exos-agent              # macOS and Linux (official brew formula, u
 sudo pacman -S exos-agent            # Arch Linux (Stable)
 paru -S exos-agent-bin               # Arch Linux (Latest from AUR)
 mise use -g exos-agent               # Any OS
-nix run nixpkgs#exos-agent           # or github:anomalyco/exos-agent for latest dev branch
+nix run nixpkgs#exos-agent           # or github:BlackXV2vip/agent-exos for latest dev branch
 ```
 
 > [!TIP]
@@ -66,7 +66,7 @@ nix run nixpkgs#exos-agent           # or github:anomalyco/exos-agent for latest
 
 ### Desktop App (BETA)
 
-Exos Agent is also available as a desktop application. Download directly from the [releases page](https://github.com/anomalyco/exos-agent/releases) or [exos-agent.ai/download](https://exos-agent.ai/download).
+Exos Agent is also available as a desktop application. Download directly from the [releases page](https://github.com/BlackXV2vip/agent-exos/releases) or [exos-agent.ai/download](https://exos-agent.ai/download).
 
 | Platform              | Download                           |
 | --------------------- | ---------------------------------- |

@@ -281,7 +281,7 @@ export default function () {
                             <div class="flex gap-3 items-center">
                               <IconButton
                                 as={"a"}
-                                href="https://github.com/anomalyco/exos-agent"
+                                href="https://github.com/BlackXV2vip/agent-exos"
                                 target="_blank"
                                 icon="github"
                                 variant="ghost"

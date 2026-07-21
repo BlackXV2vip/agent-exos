@@ -11,7 +11,7 @@
 <p align="center">
   <a href="https://exos-agent.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
   <a href="https://www.npmjs.com/package/exos-agent"><img alt="npm" src="https://img.shields.io/npm/v/exos-agent?style=flat-square" /></a>
-  <a href="https://github.com/anomalyco/exos-agent/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/anomalyco/exos-agent/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://github.com/BlackXV2vip/agent-exos/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/BlackXV2vip/agent-exos/publish.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -53,12 +53,12 @@ curl -fsSL https://exos-agent.ai/install | bash
 npm i -g exos-agent@latest        # hoặc bun/pnpm/yarn
 scoop install exos-agent             # Windows
 choco install exos-agent             # Windows
-brew install anomalyco/tap/exos-agent # macOS và Linux (khuyên dùng, luôn cập nhật)
+brew install BlackXV2vip/tap/exos-agent # macOS và Linux (khuyên dùng, luôn cập nhật)
 brew install exos-agent              # macOS và Linux (công thức brew chính thức, ít cập nhật hơn)
 sudo pacman -S exos-agent            # Arch Linux (Bản ổn định)
 paru -S exos-agent-bin               # Arch Linux (Bản mới nhất từ AUR)
 mise use -g exos-agent               # Mọi hệ điều hành
-nix run nixpkgs#exos-agent           # hoặc github:anomalyco/exos-agent cho nhánh dev mới nhất
+nix run nixpkgs#exos-agent           # hoặc github:BlackXV2vip/agent-exos cho nhánh dev mới nhất
 ```
 
 > [!TIP]
@@ -66,7 +66,7 @@ nix run nixpkgs#exos-agent           # hoặc github:anomalyco/exos-agent cho nh
 
 ### Ứng dụng Desktop (BETA)
 
-Exos Agent cũng có sẵn dưới dạng ứng dụng desktop. Tải trực tiếp từ [trang releases](https://github.com/anomalyco/exos-agent/releases) hoặc [exos-agent.ai/download](https://exos-agent.ai/download).
+Exos Agent cũng có sẵn dưới dạng ứng dụng desktop. Tải trực tiếp từ [trang releases](https://github.com/BlackXV2vip/agent-exos/releases) hoặc [exos-agent.ai/download](https://exos-agent.ai/download).
 
 | Nền tảng              | Tải xuống                          |
 | --------------------- | ---------------------------------- |

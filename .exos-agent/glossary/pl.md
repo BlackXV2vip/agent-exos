@@ -2,7 +2,7 @@
 
 ## Sources
 
-- PR #9884: https://github.com/anomalyco/exos-agent/pull/9884
+- PR #9884: https://github.com/BlackXV2vip/agent-exos/pull/9884
 
 ## Do Not Translate (Locale Additions)
 

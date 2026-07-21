@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # exos-agent Korean IME Fix Installer
-# https://github.com/anomalyco/exos-agent/issues/14371
+# https://github.com/BlackXV2vip/agent-exos/issues/14371
 #
 # Patches exos-agent to prevent Korean (and other CJK) IME last character
 # truncation when pressing Enter in Kitty and other terminals.

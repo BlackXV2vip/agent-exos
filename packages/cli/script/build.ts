@@ -105,7 +105,7 @@ for (const item of targets) {
         name: `@exos-agent/${name}`,
         version: Script.version,
         license: "MIT",
-        repository: { type: "git", url: "git+https://github.com/anomalyco/exos-agent.git" },
+        repository: { type: "git", url: "git+https://github.com/BlackXV2vip/agent-exos.git" },
         os: [item.os],
         cpu: [item.arch],
       },

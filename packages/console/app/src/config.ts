@@ -7,7 +7,7 @@ export const config = {
 
   // GitHub
   github: {
-    repoUrl: "https://github.com/anomalyco/exos-agent",
+    repoUrl: "https://github.com/BlackXV2vip/agent-exos",
     starsFormatted: {
       compact: "160K",
       full: "160,000",

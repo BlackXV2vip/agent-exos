@@ -11,7 +11,7 @@
 <p align="center">
   <a href="https://exos-agent.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
   <a href="https://www.npmjs.com/package/exos-agent"><img alt="npm" src="https://img.shields.io/npm/v/exos-agent?style=flat-square" /></a>
-  <a href="https://github.com/anomalyco/exos-agent/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/anomalyco/exos-agent/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://github.com/BlackXV2vip/agent-exos/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/BlackXV2vip/agent-exos/publish.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -53,12 +53,12 @@ curl -fsSL https://exos-agent.ai/install | bash
 npm i -g exos-agent@latest        # или bun/pnpm/yarn
 scoop install exos-agent             # Windows
 choco install exos-agent             # Windows
-brew install anomalyco/tap/exos-agent # macOS и Linux (рекомендуем, всегда актуально)
+brew install BlackXV2vip/tap/exos-agent # macOS и Linux (рекомендуем, всегда актуально)
 brew install exos-agent              # macOS и Linux (официальная формула brew, обновляется реже)
 sudo pacman -S exos-agent            # Arch Linux (Stable)
 paru -S exos-agent-bin               # Arch Linux (Latest from AUR)
 mise use -g exos-agent               # любая ОС
-nix run nixpkgs#exos-agent           # или github:anomalyco/exos-agent для самой свежей ветки dev
+nix run nixpkgs#exos-agent           # или github:BlackXV2vip/agent-exos для самой свежей ветки dev
 ```
 
 > [!TIP]
@@ -66,7 +66,7 @@ nix run nixpkgs#exos-agent           # или github:anomalyco/exos-agent для
 
 ### Десктопное приложение (BETA)
 
-Exos Agent также доступен как десктопное приложение. Скачайте его со [страницы релизов](https://github.com/anomalyco/exos-agent/releases) или с [exos-agent.ai/download](https://exos-agent.ai/download).
+Exos Agent также доступен как десктопное приложение. Скачайте его со [страницы релизов](https://github.com/BlackXV2vip/agent-exos/releases) или с [exos-agent.ai/download](https://exos-agent.ai/download).
 
 | Платформа             | Загрузка                           |
 | --------------------- | ---------------------------------- |

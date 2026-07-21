@@ -15,7 +15,7 @@ This extension requires the [exos-agent CLI](https://exos-agent.ai) to be instal
 
 ## Support
 
-This is an early release. If you encounter issues or have feedback, please create an issue at https://github.com/anomalyco/exos-agent/issues.
+This is an early release. If you encounter issues or have feedback, please create an issue at https://github.com/BlackXV2vip/agent-exos/issues.
 
 ## Development
 
