@@ -272,7 +272,7 @@ export const { use: useTheme, provider: ThemeProvider } = createSimpleContext({
     const subtleSyntax = createSyntaxStyleMemo(() => generateSubtleSyntax(values()))
 
     return {
-      theme: new Proxy(values(), {
+      theme: new Proxy((values() || {}), {
         get(_target, prop) {
           // @ts-expect-error Properties are forwarded to the current reactive value.
           return values()[prop]
