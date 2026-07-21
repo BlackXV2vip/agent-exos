@@ -221,7 +221,7 @@ print_message() {
 
 check_version() {
     if command -v exos-agent >/dev/null 2>&1; then
-        exos-agent_path=$(which exos-agent)
+        exos-agent_path=$(command -v exos-agent)
 
         ## Check the installed version
         installed_version=$(exos-agent --version 2>/dev/null || echo "")
