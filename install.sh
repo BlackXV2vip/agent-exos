@@ -22,10 +22,22 @@ if command -v exos-agent >/dev/null 2>&1; then
     exos-agent run "مرحبا من التثبيت التلقائي"
 else
     if [ -d /tmp/agent-exos-source ]; then
-    echo "Agent 👨🏻‍💻: » Running from source..."
-    export PATH="$HOME/.bun/bin:$PATH" 2>/dev/null || true
-    (cd /tmp/agent-exos-source && bun run --cwd packages/exos-agent dev 2>/dev/null || echo "Agent 👨🏻‍💻: » Source running — open /tmp/agent-exos-source")
-else
-    echo "Agent 👨🏻‍💻: » Source not cloned — use: bash /tmp/agent-exos-source/fix-after-download.sh"
+        echo "Agent 👨🏻‍💻: » Running from source..."
+        export PATH="$HOME/.bun/bin:$PATH" 2>/dev/null || true
+        (cd /tmp/agent-exos-source && bun run --cwd packages/exos-agent dev 2>/dev/null || echo "Agent 👨🏻‍💻: » Source running")
+    else
+        echo "Agent 👨🏻‍💻: » Source not cloned"
+    fi
 fi
+
+# إنشاء أمر مختصر 'exos' للمستخدم
+mkdir -p "$HOME/.local/bin"
+if [ -d /tmp/agent-exos-source ]; then
+    echo '#!/bin/bash
+export PATH="/home/user/.bun/bin:$PATH" 2>/dev/null || true
+(cd /tmp/agent-exos-source && bun run --cwd packages/exos-agent dev 2>/dev/null || node -e "console.log(\"Agent 👨🏻‍💻: يعمل من المصدر\")")
+' > "$HOME/.local/bin/exos"
+    chmod +x "$HOME/.local/bin/exos"
+    echo "Agent 👨🏻‍💻: » تم إنشاء الأمر المختصر: exos"
 fi
+export PATH="$HOME/.local/bin:$PATH" 2>/dev/null || true

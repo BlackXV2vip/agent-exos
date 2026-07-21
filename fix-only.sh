@@ -3,6 +3,11 @@
 set -euo pipefail
 
 PROJECT="${1:-/tmp/agent-exos-source}"
+if [ ! -d "$PROJECT" ] && [ -d "/tmp/agent-exos_install_"* ]; then
+  for d in /tmp/agent-exos_install_*/repo; do
+    [ -d "$d" ] && PROJECT="$d" && break
+  done
+fi
 if [ ! -d "$PROJECT" ]; then
   echo "Agent 👨🏻‍💻: المشروع غير موجود في $PROJECT"
   echo "You👤: هل نزّلت المشروع أولاً؟ جرب: curl ... | bash"
